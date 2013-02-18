@@ -9,10 +9,10 @@ import java.util.Scanner;
 public class AlgoHelper {
 
 	@SuppressWarnings("resource")
-	public static ArrayList<ArrayList<Integer>> readMatrix(String filename)
+	public static ArrayList<ArrayList<Integer>> readData(String filename)
 			throws FileNotFoundException {
 
-		ArrayList<ArrayList<Integer>> matrix = new ArrayList<ArrayList<Integer>>();
+		ArrayList<ArrayList<Integer>> data = new ArrayList<ArrayList<Integer>>();
 		Scanner input = new Scanner(new File(filename));
 		while (input.hasNextLine()) {
 			Scanner rowReader = new Scanner(input.nextLine());
@@ -20,9 +20,9 @@ public class AlgoHelper {
 			while (rowReader.hasNextInt()) {
 				row.add(rowReader.nextInt());
 			}
-			matrix.add(row);
+			data.add(row);
 		}
-		return matrix;
+		return data;
 	}
 
 	public static Integer[] readArrayFromFile(String filename)
@@ -42,29 +42,6 @@ public class AlgoHelper {
 		int temp = array[l];
 		array[l] = array[r];
 		array[r] = temp;
-	}
-
-	public static ArrayList<ArrayList<Integer>> readData(String filename)
-			throws FileNotFoundException {
-
-		ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
-		Scanner input = new Scanner(new File(filename));
-		while (input.hasNextLine()) {
-			Scanner rowReader = new Scanner(input.nextLine());
-			ArrayList<Integer> row = new ArrayList<Integer>();
-			if (rowReader.hasNextInt()) {
-				//first number in row is the vertex label,
-				// its equal index in graph arraylist
-				// so we skip it 
-				rowReader.nextInt();
-				
-				while (rowReader.hasNextInt()) {
-					row.add(rowReader.nextInt());
-				}
-			}
-			graph.add(row);
-		}
-		return graph;
 	}
 
 }
