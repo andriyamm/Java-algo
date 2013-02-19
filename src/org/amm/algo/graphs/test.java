@@ -28,15 +28,15 @@ public class test {
 		
 		ArrayList<Integer> rr = new ArrayList<Integer>();
 		
-		for(Integer i: vv){
+		for(int i = 1; i<vv.size(); i++){
 			if((i != v)||(i != u)){
-				rr.add(i);
+				rr.add(vv.get(i));
 			}
 		}
 		
-		for(Integer i: uu){
+		for(int i = 1; i<uu.size(); i++){
 			if((i != v)||(i != u)){
-				rr.add(i);
+				rr.add(uu.get(i));
 			}
 		}
 		
@@ -47,7 +47,7 @@ public class test {
 
 	private void change(ArrayList<ArrayList<Integer>> graph) {
 		// TODO Auto-generated method stub
-		g
+		
 	}
 	
 }

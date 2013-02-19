@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class AlgoHelper {
 
-	@SuppressWarnings("resource")
-	public static ArrayList<ArrayList<Integer>> readMatrix(String filename)
+	public static ArrayList<ArrayList<Integer>> readDataFromFile(String filename)
 			throws FileNotFoundException {
 
 		ArrayList<ArrayList<Integer>> matrix = new ArrayList<ArrayList<Integer>>();
@@ -44,7 +43,7 @@ public class AlgoHelper {
 		array[r] = temp;
 	}
 
-	public static ArrayList<ArrayList<Integer>> readData(String filename)
+	public static ArrayList<ArrayList<Integer>> readData1(String filename)
 			throws FileNotFoundException {
 
 		ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
