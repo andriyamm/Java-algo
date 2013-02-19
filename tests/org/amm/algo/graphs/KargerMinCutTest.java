@@ -3,7 +3,7 @@ package org.amm.algo.graphs;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import org.amm.algo.utils.AlgoHelper;
+import org.amm.algo.utils.AlgoFileHelper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class KargerMinCutTest {
 
 		ArrayList<ArrayList<Integer>> graph = null;
 		try {
-			graph = AlgoHelper.readData("res/karger/t0.txt");
+			graph = AlgoFileHelper.readData("res/karger/t.txt");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -2,6 +2,8 @@ package org.amm.algo.graphs;
 
 import java.util.ArrayList;
 
+import org.amm.algo.utils.AlgoHelper;
+
 /**
  * TODO
  * 
@@ -9,41 +11,37 @@ import java.util.ArrayList;
 public class KargerMinCut {
 
 	/**
-	 * min cut
+	 * karger's min cut algorithm
+	 * 
+	 * While there are more than 2 vertices: • pick a remaining edge (u,v)
+	 * uniformly at random • merge (or “contract” ) u and v into a single vertex
+	 * • remove self-loops return cut represented by final 2 vertices. 8
 	 * 
 	 * @param graph
-	 * @return
+	 *            graph represented as adjacenty list
+	 * 
+	 * @return computed minCut value
 	 */
 	public long kargerMinCutAlgo(ArrayList<ArrayList<Integer>> graph) {
 
 		int numberOfVertices = graph.size();
-		Edge edge = null;
+		
+		// verticiesIndex -  vertex's(ArrayList<Integer>) index in graph arrayList
+		Edge verticiesIndex = null;
+		
+		// verticiesLabel - vertex label (the first integer value in ArrayList<Integer>)
+		Edge verticiesLabel = new Edge();
 		while (numberOfVertices != 2) {
-			edge = pickRandomEdge(graph);
-			mergeTwoVertices(graph, edge);
-			refreshGraph(graph, edge);
+			verticiesIndex = pickRandomEdge(graph);
+			
+			verticiesLabel.setBeginVertix(graph.get(verticiesIndex.getBeginVertix()).get(0));
+			verticiesLabel.setEndVertix(graph.get(verticiesIndex.getEndVertix()).get(0));
+			
+			mergeTwoVertices(graph, verticiesIndex);
+			refreshGraph(graph, verticiesLabel);
 			numberOfVertices--;
 		}
-		return countMinCut(graph);
-	}
-
-	/**
-	 * TODO
-	 * 
-	 * @param graph
-	 */
-	private long countMinCut(ArrayList<ArrayList<Integer>> graph) {
-		
-		ArrayList<Integer> q = graph.get(0);
-		long count = 0;
-		
-		int v = q.get(0);
-		for (int i = 1; i < q.size(); i++) {
-			if (v == q.get(i)) {
-				count++;
-			}
-		}
-		return count;
+		return graph.get(0).size() - 1;
 	}
 
 	/**
@@ -61,8 +59,11 @@ public class KargerMinCut {
 		ArrayList<Integer> uu = graph.get(u);
 		ArrayList<Integer> rr = new ArrayList<Integer>();
 
-		com(rr, vv, v, u);
-		com(rr, uu, v, u);
+		// TODO
+		rr.add(vv.get(0));
+
+		mergingVertexLists(rr, vv, vv.get(0), uu.get(0));
+		mergingVertexLists(rr, uu, vv.get(0), uu.get(0));
 
 		graph.set(v, rr);
 		graph.remove(u);
@@ -76,12 +77,12 @@ public class KargerMinCut {
 	 * @param v
 	 * @param u
 	 */
-	private void com(ArrayList<Integer> rr, ArrayList<Integer> vv, int v, int u) {
+	private void mergingVertexLists(ArrayList<Integer> rr, ArrayList<Integer> vv, int v, int u) {
 
 		int j = 0;
 		for (int i = 1; i < vv.size(); i++) {
 			j = vv.get(i);
-			if ((j != vv.get(v)) && (j != vv.get(u))) {
+			if ((j != v) && (j != u)) {
 				rr.add(j);
 			}
 		}
@@ -100,7 +101,7 @@ public class KargerMinCut {
 
 		for (ArrayList<Integer> vertices : graph) {
 			for (int vertix = 1; vertix < vertices.size(); vertix++) {
-				if ((vertix == v) || (vertix == u)) {
+				if (vertices.get(vertix) == u) {
 					vertices.set(vertix, v);
 				}
 			}
@@ -108,7 +109,6 @@ public class KargerMinCut {
 	}
 
 	/**
-	 * TODO
 	 * 
 	 * @param graph
 	 * @return
@@ -118,25 +118,49 @@ public class KargerMinCut {
 		Edge edge = new Edge();
 		int max = graph.size();
 
-		int beginRandom = randomVertix(max);
-		edge.setBeginVertix(beginRandom);
+		int beginRandomIndex = AlgoHelper.randomNumber(0, max);
+		ArrayList<Integer> t = graph.get(beginRandomIndex);
 
-		int endRandom = randomVertix(max);
-		while (beginRandom == endRandom) {
-			endRandom = randomVertix(max);
+		int randomVertix = AlgoHelper.randomNumber(1, t.size());
+		int randomIndex = findEndIndex(graph, t.get(randomVertix));
+
+		if (beginRandomIndex < randomIndex) {
+			edge.setBeginVertix(beginRandomIndex);
+			edge.setEndVertix(randomIndex);
+		} else {
+			edge.setBeginVertix(randomIndex);
+			edge.setEndVertix(beginRandomIndex);
 		}
-		edge.setEndVertix(endRandom);
 
 		return edge;
+
 	}
 
 	/**
 	 * TODO
 	 * 
-	 * @param max
+	 * @param graph
+	 * @param key
 	 * @return
 	 */
-	public int randomVertix(int max) {
-		return (int) (Math.random() * (max));
+	private int findEndIndex(ArrayList<ArrayList<Integer>> graph, int key) {
+
+		int start = 0;
+		int end = graph.size() - 1;
+
+		while (start <= end) {
+			int mid = start + (end - start) / 2;
+			if (key < graph.get(mid).get(0)){
+				end = mid - 1;
+			}
+			else if (key > graph.get(mid).get(0)){
+				start = mid + 1;
+			}
+			else {
+				return mid;
+			}
+		}
+		return -1;
 	}
+
 }

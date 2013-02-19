@@ -2,7 +2,7 @@ package org.amm.algo.sort.qs;
 
 import java.io.FileNotFoundException;
 
-import org.amm.algo.utils.AlgoHelper;
+import org.amm.algo.utils.AlgoFileHelper;
 import org.junit.Test;
 
 public class ps2Test {
@@ -12,7 +12,7 @@ public class ps2Test {
 		Integer[] array = null;
 		try {
 			//array = AdaHelper.readArrayFromFile("IntegerArray.txt");
-			array = AlgoHelper.readArrayFromFile("qs.txt");
+			array = AlgoFileHelper.readArrayFromFile("qs.txt");
 			//array = AdaHelper.readArrayFromFile("qs1.txt");
 			//array = AdaHelper.readArrayFromFile("qs.txt");
 		} catch (FileNotFoundException e) {
