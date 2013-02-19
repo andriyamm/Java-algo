@@ -3,11 +3,20 @@ package org.amm.algo.utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AlgoFileHelper {
-	
+
+	/**
+	 * TODO
+	 * 
+	 * @param filename
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public static ArrayList<ArrayList<Integer>> readData(String filename)
 			throws FileNotFoundException {
 
@@ -24,6 +33,13 @@ public class AlgoFileHelper {
 		return data;
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param filename
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public static Integer[] readArrayFromFile(String filename)
 			throws FileNotFoundException {
 
@@ -37,4 +53,35 @@ public class AlgoFileHelper {
 		return sb.toArray(new Integer[1]);
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param filename
+	 * @return
+	 * @throws FileNotFoundException
+	 */
+	public static Map<Integer, ArrayList<Integer>> readDataToMap(String filename) throws FileNotFoundException {
+
+		Map<Integer, ArrayList<Integer>> data = new HashMap<Integer, ArrayList<Integer>>();
+		int vertix = 0;
+
+		Scanner input = new Scanner(new File(filename));
+
+		while (input.hasNextLine()) {
+			Scanner rowReader = new Scanner(input.nextLine());
+			ArrayList<Integer> row = new ArrayList<Integer>();
+			if (rowReader.hasNextInt()) {
+				
+				// first number in row is the vertex label,
+				// we will used it as key in map
+				vertix = rowReader.nextInt();
+				while (rowReader.hasNextInt()) {
+					row.add(rowReader.nextInt());
+				}
+			}
+			data.put(vertix, row);
+		}
+		return data;
+	}
+	
 }
