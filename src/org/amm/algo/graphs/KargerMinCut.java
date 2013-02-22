@@ -27,10 +27,10 @@ public class KargerMinCut {
 		int numberOfVertices = graph.size();
 		
 		// verticiesIndex -  vertex's(ArrayList<Integer>) index in graph arrayList
-		Edge verticiesIndex = null;
+		SimpleEdge verticiesIndex = null;
 		
 		// verticiesLabel - vertex label (the first integer value in ArrayList<Integer>)
-		Edge verticiesLabel = new Edge();
+		SimpleEdge verticiesLabel = new SimpleEdge();
 		while (numberOfVertices != 2) {
 			verticiesIndex = pickRandomEdge(graph);
 			
@@ -50,7 +50,7 @@ public class KargerMinCut {
 	 * @param graph
 	 * @param edge
 	 */
-	public void mergeTwoVertices(ArrayList<ArrayList<Integer>> graph, Edge edge) {
+	public void mergeTwoVertices(ArrayList<ArrayList<Integer>> graph, SimpleEdge edge) {
 
 		int v = edge.getBeginVertix();
 		int u = edge.getEndVertix();
@@ -94,7 +94,7 @@ public class KargerMinCut {
 	 * @param graph
 	 * @param edge
 	 */
-	private void refreshGraph(ArrayList<ArrayList<Integer>> graph, Edge edge) {
+	private void refreshGraph(ArrayList<ArrayList<Integer>> graph, SimpleEdge edge) {
 
 		int v = edge.getBeginVertix();
 		int u = edge.getEndVertix();
@@ -113,9 +113,9 @@ public class KargerMinCut {
 	 * @param graph
 	 * @return
 	 */
-	public Edge pickRandomEdge(ArrayList<ArrayList<Integer>> graph) {
+	public SimpleEdge pickRandomEdge(ArrayList<ArrayList<Integer>> graph) {
 
-		Edge edge = new Edge();
+		SimpleEdge edge = new SimpleEdge();
 		int max = graph.size();
 
 		int beginRandomIndex = AlgoHelper.randomNumber(0, max);

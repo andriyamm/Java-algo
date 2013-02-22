@@ -1,34 +1,72 @@
 package org.amm.algo.graphs;
 
-public class Edge {
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
-	private int beginVertix;
-	private int endVertix;
+public class Edge<T> implements Comparable<Edge<T>>{
+
+	protected Vertix<T> from;
+	protected Vertix<T> to;
 
 	public Edge() {
 		super();
 	}
 
-	public Edge(int beginVertix, int endVertix) {
+	public Edge(Vertix<T> from, Vertix<T> to) {
 		super();
-		this.beginVertix = beginVertix;
-		this.endVertix = endVertix;
+		this.from = from;
+		this.to = to;
 	}
 
-	public int getBeginVertix() {
-		return beginVertix;
+	public Vertix<T> getFrom() {
+		return from;
 	}
 
-	public void setBeginVertix(int beginVertix) {
-		this.beginVertix = beginVertix;
+	public void setFrom(Vertix<T> from) {
+		this.from = from;
 	}
 
-	public int getEndVertix() {
-		return endVertix;
+	public Vertix<T> getTo() {
+		return to;
 	}
 
-	public void setEndVertix(int endVertix) {
-		this.endVertix = endVertix;
+	public void setTo(Vertix<T> to) {
+		this.to = to;
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(17, 37).append(from).append(to).toHashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		if (obj.getClass() != getClass()) {
+			return false;
+		}
+
+		Edge<T> rhs = (Edge<T>) obj;
+		return new EqualsBuilder().append(from, rhs.from).append(to, rhs.to)
+				.isEquals();
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("from", from).append("to", to)
+				.toString();
+	}
+
+	@Override
+	public int compareTo(Edge<T> o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

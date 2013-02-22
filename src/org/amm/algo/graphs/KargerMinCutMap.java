@@ -24,7 +24,7 @@ public class KargerMinCutMap {
 
 		int numberOfVertices = graph.size();
 
-		Edge edge = null;
+		SimpleEdge edge = null;
 		while (numberOfVertices != 2) {
 			edge = pickRandomEdge(graph);
 
@@ -55,7 +55,7 @@ public class KargerMinCutMap {
 	 * @param edge
 	 */
 	public void mergeTwoVertices(Map<Integer, ArrayList<Integer>> graph,
-			Edge edge) {
+			SimpleEdge edge) {
 
 		int v = edge.getBeginVertix();
 		int u = edge.getEndVertix();
@@ -97,7 +97,7 @@ public class KargerMinCutMap {
 	 * @param graph
 	 * @param edge
 	 */
-	private void refreshGraph(Map<Integer, ArrayList<Integer>> graph, Edge edge) {
+	private void refreshGraph(Map<Integer, ArrayList<Integer>> graph, SimpleEdge edge) {
 
 		int v = edge.getBeginVertix();
 		int u = edge.getEndVertix();
@@ -117,9 +117,9 @@ public class KargerMinCutMap {
 	 * @param graph
 	 * @return
 	 */
-	public Edge pickRandomEdge(Map<Integer, ArrayList<Integer>> graph) {
+	public SimpleEdge pickRandomEdge(Map<Integer, ArrayList<Integer>> graph) {
 
-		Edge edge = new Edge();
+		SimpleEdge edge = new SimpleEdge();
 		int max = graph.size();
 
 		int beginRandomIndex = AlgoHelper.randomNumber(0, max);
