@@ -1,6 +1,6 @@
 package org.amm.algo.graphs.sd;
 
-public class WeightedEdge<T> extends Edge<T> implements Comparable<Edge<T>>{
+public class WeightedEdge<T> extends Edge<T> {
 
 	private int weight;
 	

@@ -113,6 +113,7 @@ public class KargerMinCutMap {
 	}
 
 	/**
+	 * TODO
 	 * 
 	 * @param graph
 	 * @return

@@ -40,6 +40,7 @@ public class Edge<T> implements Comparable<Edge<T>>{
 		return new HashCodeBuilder(17, 37).append(from).append(to).toHashCode();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
