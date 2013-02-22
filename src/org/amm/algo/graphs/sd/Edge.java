@@ -1,4 +1,4 @@
-package org.amm.algo.graphs;
+package org.amm.algo.graphs.sd;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

@@ -1,4 +1,4 @@
-package org.amm.algo.graphs;
+package org.amm.algo.graphs.sd;
 
 public class Vertix<T> {
 
