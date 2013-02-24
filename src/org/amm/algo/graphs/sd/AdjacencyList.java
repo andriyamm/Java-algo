@@ -22,17 +22,17 @@ public class AdjacencyList<T> {
 	}
 
 	public void addEdge(IEdge<T> edge) {
-		//TODO
+		// TODO
 	}
 
 	public Set<Vertix<T>> getAdjacent(Vertix<T> source) {
 		return adjacencies.get(source);
 	}
 
-//	public void reverseEdge(IEdge<T> edge) {
-//		adjacencies.get(edge.getFrom()).remove(edge);
-//		addEdge(edge.getTo(), edge.getFrom());
-//	}
+	// public void reverseEdge(IEdge<T> edge) {
+	// adjacencies.get(edge.getFrom()).remove(edge);
+	// addEdge(edge.getTo(), edge.getFrom());
+	// }
 
 	public void reverseGraph() {
 		adjacencies = getReversedList().adjacencies;
@@ -53,11 +53,24 @@ public class AdjacencyList<T> {
 		return adjacencies.keySet();
 	}
 
-//	public Collection<IEdge<T>> getAllEdges() {
-//		List<IEdge<T>> edges = new ArrayList<IEdge<T>>();
-//		for (List<IEdge<T>> e : adjacencies.values()) {
-//			edges.addAll(e);
-//		}
-//		return edges;
-//	}
+	// public Collection<IEdge<T>> getAllEdges() {
+	// List<IEdge<T>> edges = new ArrayList<IEdge<T>>();
+	// for (List<IEdge<T>> e : adjacencies.values()) {
+	// edges.addAll(e);
+	// }
+	// return edges;
+	// }
+	public Vertix<T> getRandomVertix(){
+		//TODO
+		return (Vertix<T>) new Vertix<Integer>(1);
+	}
+	
+	public Map<Vertix<T>, Set<Vertix<T>>> getAdjacencies() {
+		return adjacencies;
+	}
+
+	public void setAdjacencies(Map<Vertix<T>, Set<Vertix<T>>> adjacencies) {
+		this.adjacencies = adjacencies;
+	}
+
 }

@@ -1,12 +1,15 @@
 package org.amm.algo.graphs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.amm.algo.graphs.sd.AdjacencyList;
-import org.amm.algo.graphs.sd.IEdge;
 import org.amm.algo.graphs.sd.Vertix;
 
 /**
@@ -15,16 +18,25 @@ import org.amm.algo.graphs.sd.Vertix;
  */
 public class KosarajuAlgo<T> {
 
-	private ArrayList<Vertix<T>> stack;
+	private ArrayList<Vertix<T>> order;
 
-	public void run(Map<Vertix<Integer>, Set<Vertix<Integer>>> graph){
+	public List<Integer> find(AdjacencyList<T> adjacencyList, int maxResults){
+		//TODO
+		Vertix<T> root = adjacencyList.getRandomVertix();
 		
+		Map<Integer, ArrayList<Vertix<T>>> result = getSCC(root, adjacencyList);
+		Object array = result.keySet().toArray();
+		
+		List<Integer> r = new ArrayList<Integer>(Arrays.asList((Integer[] )array));
+		Collections.sort(r);
+		
+		return r;
 	}
-	
-	public ArrayList<ArrayList<Vertix<T>>> getSCC(Vertix<T> root,
+
+	public Map<Integer, ArrayList<Vertix<T>>> getSCC(Vertix<T> root,
 			AdjacencyList<T> list) {
-		
-		stack = new ArrayList<Vertix<T>>();
+
+		order = new ArrayList<Vertix<T>>();
 
 		// search the graph (depth-first search), adding Vertix<T>s to the stack
 		search(root, list, true);
@@ -33,14 +45,14 @@ public class KosarajuAlgo<T> {
 		list.reverseGraph();
 
 		// search the graph again in the stack's order
-		ArrayList<ArrayList<Vertix<T>>> SCC = new ArrayList<ArrayList<Vertix<T>>>();
-		while (!stack.isEmpty()) {
+		Map<Integer, ArrayList<Vertix<T>>> scc = new HashMap<Integer, ArrayList<Vertix<T>>>();
+		while (!order.isEmpty()) {
 			ArrayList<Vertix<T>> component = new ArrayList<Vertix<T>>();
-			search(stack.get(0), list, false);
+			search(order.get(0), list, false);
 
 			// any components we visited are strongly connected
 			// remove them from the stack and add them to the component
-			for (Iterator<Vertix<T>> it = stack.iterator(); it.hasNext();) {
+			for (Iterator<Vertix<T>> it = order.iterator(); it.hasNext();) {
 				Vertix<T> n = it.next();
 				if (!n.isVisited()) {
 					component.add(n);
@@ -49,25 +61,27 @@ public class KosarajuAlgo<T> {
 			}
 
 			// add the component to the result set
-			SCC.add(component);
+			scc.put(component.size(), component);
 		}
-		return SCC;
+		return scc;
 	}
 
 	private void search(Vertix<T> root, AdjacencyList<T> list, boolean forward) {
+
 		root.setVisited(forward);
 
 		if (list.getAdjacent(root) == null) {
 			if (forward)
-				stack.add(0, root);
+				order.add(0, root);
 			return;
 		}
-		for (Vertix<T> e : list.getAdjacent(root)) {
-			if (e.to.visited != forward) {
-				search(e.to, list, forward);
+
+		for (Vertix<T> vertix : list.getAdjacent(root)) {
+			if (vertix.isVisited() != forward) {
+				search(vertix, list, forward);
 			}
 		}
 		if (forward)
-			stack.add(0, root);
+			order.add(0, root);
 	}
 }

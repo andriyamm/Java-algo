@@ -1,9 +1,11 @@
 package org.amm.algo.graphs;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
+import org.amm.algo.graphs.sd.AdjacencyList;
 import org.amm.algo.graphs.sd.Vertix;
 import org.amm.algo.utils.AlgoFileHelper;
 import org.junit.Before;
@@ -11,8 +13,8 @@ import org.junit.Test;
 
 public class KosarajuAlgoTest {
 
-private KosarajuAlgo<Integer> kosarajuAlgo;
-	
+	private KosarajuAlgo<Integer> kosarajuAlgo;
+
 	@Before
 	public void setUp() {
 		kosarajuAlgo = new KosarajuAlgo<Integer>();
@@ -21,15 +23,19 @@ private KosarajuAlgo<Integer> kosarajuAlgo;
 	@Test
 	public void kargerMinCutAlgoTest() {
 
-		Map<Vertix<Integer>, Set<Vertix<Integer>>> graph = null;
+		AdjacencyList<Integer> adjacencyList = new AdjacencyList<Integer>();
 		try {
-			graph = AlgoFileHelper.readDataToMap1("res/kosaraju/t.txt");
+			adjacencyList.setAdjacencies(AlgoFileHelper
+					.readDataToMap1("res/scc/t2.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		kosarajuAlgo.run(graph);
+
+		List<Integer> result = kosarajuAlgo.find(adjacencyList, 5);
+		for(Integer i:result){
+			System.out.println(i);
+		}
 		
 		System.out.println();
 	}
