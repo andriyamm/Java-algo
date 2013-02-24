@@ -3,6 +3,7 @@ package org.amm.algo.graphs;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import org.amm.algo.graphs.karger.KargerMinCut;
 import org.amm.algo.utils.AlgoFileHelper;
 import org.junit.Before;
 import org.junit.Test;

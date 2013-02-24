@@ -1,4 +1,4 @@
-package org.amm.algo.graphs;
+package org.amm.algo.graphs.karger;
 
 import java.util.ArrayList;
 

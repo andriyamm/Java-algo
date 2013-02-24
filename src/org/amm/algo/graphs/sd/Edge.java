@@ -4,7 +4,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Edge<T> implements Comparable<Edge<T>>{
+public class Edge<T> implements Comparable<Edge<T>>, IEdge<T>{
 
 	protected Vertix<T> from;
 	protected Vertix<T> to;

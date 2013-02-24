@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.amm.algo.graphs.karger.KargerMinCutMap;
 import org.amm.algo.utils.AlgoFileHelper;
 import org.junit.Before;
 import org.junit.Test;

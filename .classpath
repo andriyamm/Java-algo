@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/workspace-git/lib/junit-4.10.jar"/>
-	<classpathentry kind="lib" path="D:/workspace-git/lib_s/commons-lang3.jar"/>
+	<classpathentry kind="lib" path="F:/_dev/_lib/commons-lang3-3.1/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="F:/_dev/_lib/junit-4.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

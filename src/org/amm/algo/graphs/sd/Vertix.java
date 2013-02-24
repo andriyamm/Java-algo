@@ -11,6 +11,12 @@ public class Vertix<T> {
 		this.visited = visited;
 	}
 
+	public Vertix(T name) {
+		super();
+		this.name = name;
+		this.visited = false;
+	}
+
 	public boolean isVisited() {
 		return visited;
 	}
