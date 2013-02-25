@@ -1,9 +1,9 @@
 package org.amm.algo.graphs.sd;
 
-public interface IEdge<T> {
+public interface IEdge {
 
-	Vertix<T> getFrom();
+	Vertix getFrom();
 
-	Vertix<T> getTo();
+	Vertix getTo();
 
 }

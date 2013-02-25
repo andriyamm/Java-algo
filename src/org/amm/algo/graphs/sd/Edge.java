@@ -4,34 +4,34 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Edge<T> implements Comparable<Edge<T>>, IEdge<T>{
+public class Edge implements Comparable<Edge>, IEdge{
 
-	protected Vertix<T> from;
-	protected Vertix<T> to;
+	protected Vertix from;
+	protected Vertix to;
 
 	public Edge() {
 		super();
 	}
 
-	public Edge(Vertix<T> from, Vertix<T> to) {
+	public Edge(Vertix from, Vertix to) {
 		super();
 		this.from = from;
 		this.to = to;
 	}
 
-	public Vertix<T> getFrom() {
+	public Vertix getFrom() {
 		return from;
 	}
 
-	public void setFrom(Vertix<T> from) {
+	public void setFrom(Vertix from) {
 		this.from = from;
 	}
 
-	public Vertix<T> getTo() {
+	public Vertix getTo() {
 		return to;
 	}
 
-	public void setTo(Vertix<T> to) {
+	public void setTo(Vertix to) {
 		this.to = to;
 	}
 
@@ -40,7 +40,6 @@ public class Edge<T> implements Comparable<Edge<T>>, IEdge<T>{
 		return new HashCodeBuilder(17, 37).append(from).append(to).toHashCode();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
@@ -53,7 +52,7 @@ public class Edge<T> implements Comparable<Edge<T>>, IEdge<T>{
 			return false;
 		}
 
-		Edge<T> rhs = (Edge<T>) obj;
+		Edge rhs = (Edge) obj;
 		return new EqualsBuilder().append(from, rhs.from).append(to, rhs.to)
 				.isEquals();
 	}
@@ -65,7 +64,7 @@ public class Edge<T> implements Comparable<Edge<T>>, IEdge<T>{
 	}
 
 	@Override
-	public int compareTo(Edge<T> o) {
+	public int compareTo(Edge o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

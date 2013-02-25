@@ -6,14 +6,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class AdjacencyList<T> {
+public class AdjacencyList {
 
-	private Map<Vertix<T>, Set<Vertix<T>>> adjacencies = new HashMap<Vertix<T>, Set<Vertix<T>>>();
+	private Map<Vertix, Set<Vertix>> adjacencies = new HashMap<Vertix, Set<Vertix>>();
 
-	public void addEdge(Vertix<T> from, Vertix<T> to) {
-		Set<Vertix<T>> set;
+	public void addEdge(Vertix from, Vertix to) {
+		Set<Vertix> set;
 		if (!adjacencies.containsKey(from)) {
-			set = new HashSet<Vertix<T>>();
+			set = new HashSet<Vertix>();
 			adjacencies.put(from, set);
 		} else {
 			set = adjacencies.get(from);
@@ -21,15 +21,27 @@ public class AdjacencyList<T> {
 		set.add(to);
 	}
 
-	public void addEdge(IEdge<T> edge) {
+	public void addEdge(IEdge edge) {
 		// TODO
 	}
 
-	public Set<Vertix<T>> getAdjacent(Vertix<T> source) {
+	/**
+	 * 
+	 * @param vertix
+	 * @param mark
+	 */
+	public void markVertix(Vertix vertix, boolean mark){
+		if(adjacencies.containsKey(vertix)){
+			//adjacencies.keySet().is;
+		}
+		
+	}
+	
+	public Set<Vertix> getAdjacent(Vertix source) {
 		return adjacencies.get(source);
 	}
 
-	// public void reverseEdge(IEdge<T> edge) {
+	// public void reverseEdge(IEdge edge) {
 	// adjacencies.get(edge.getFrom()).remove(edge);
 	// addEdge(edge.getTo(), edge.getFrom());
 	// }
@@ -38,38 +50,51 @@ public class AdjacencyList<T> {
 		adjacencies = getReversedList().adjacencies;
 	}
 
-	public AdjacencyList<T> getReversedList() {
-		AdjacencyList<T> newlist = new AdjacencyList<T>();
-		for (Entry<Vertix<T>, Set<Vertix<T>>> entry : adjacencies.entrySet()) {
-			Vertix<T> from = entry.getKey();
-			for (Vertix<T> to : entry.getValue()) {
+	public AdjacencyList getReversedList() {
+		AdjacencyList newlist = new AdjacencyList();
+		for (Entry<Vertix, Set<Vertix>> entry : adjacencies.entrySet()) {
+			Vertix from = entry.getKey();
+			for (Vertix to : entry.getValue()) {
 				newlist.addEdge(to, from);
 			}
 		}
 		return newlist;
 	}
 
-	public Set<Vertix<T>> getSourceVertixSet() {
+	public Set<Vertix> getSourceVertixSet() {
 		return adjacencies.keySet();
 	}
 
-	// public Collection<IEdge<T>> getAllEdges() {
-	// List<IEdge<T>> edges = new ArrayList<IEdge<T>>();
-	// for (List<IEdge<T>> e : adjacencies.values()) {
+	// public Collection<IEdge> getAllEdges() {
+	// List<IEdge> edges = new ArrayList<IEdge>();
+	// for (List<IEdge> e : adjacencies.values()) {
 	// edges.addAll(e);
 	// }
 	// return edges;
 	// }
-	public Vertix<T> getRandomVertix(){
+	
+	public Vertix getRandomVertix(){
 		//TODO
-		return (Vertix<T>) new Vertix<Integer>(1);
+		return new Vertix(1);
+		//return adjacencies.keySet().iterator().next();
 	}
 	
-	public Map<Vertix<T>, Set<Vertix<T>>> getAdjacencies() {
+	public void printList(){
+		for (Entry<Vertix, Set<Vertix>> entry : adjacencies.entrySet()) {
+			Vertix from = entry.getKey();
+			System.out.print(from.getName() + ":\t");
+			for (Vertix to : entry.getValue()) {
+				System.out.print(to.getName() + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public Map<Vertix, Set<Vertix>> getAdjacencies() {
 		return adjacencies;
 	}
 
-	public void setAdjacencies(Map<Vertix<T>, Set<Vertix<T>>> adjacencies) {
+	public void setAdjacencies(Map<Vertix, Set<Vertix>> adjacencies) {
 		this.adjacencies = adjacencies;
 	}
 
