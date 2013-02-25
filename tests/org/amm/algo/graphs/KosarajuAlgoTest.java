@@ -3,8 +3,6 @@ package org.amm.algo.graphs;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import org.amm.algo.graphs.sd.AdjacencyList;
-import org.amm.algo.utils.AlgoFileHelper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,18 +16,112 @@ public class KosarajuAlgoTest {
 	}
 
 	@Test
-	public void kargerMinCutAlgoTest() {
+	public void kargerMinCutAlgo_t2_Test() {
 
-		AdjacencyList adjacencyList = new AdjacencyList();
 		try {
-			adjacencyList.setAdjacencies(AlgoFileHelper
-					.readDataToMap1("res/scc/t2.txt"));
+			kosarajuAlgo.init("res/scc/t2.txt");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<Integer> result = kosarajuAlgo.find(adjacencyList);
+		List<Integer> result = kosarajuAlgo.find();
+		
+		for(Integer i:result){
+			System.out.println(i);
+		}
+		
+		System.out.println();
+	}
+	
+	@Test
+	public void kargerMinCutAlgo_t4_Test() {
+
+		try {
+			kosarajuAlgo.init("res/scc/t4.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		List<Integer> result = kosarajuAlgo.find();
+		
+		for(Integer i:result){
+			System.out.println(i);
+		}
+		
+		System.out.println();
+	}
+	
+	@Test
+	public void kargerMinCutAlgo_t5_Test() {
+
+		try {
+			kosarajuAlgo.init("res/scc/t5.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		List<Integer> result = kosarajuAlgo.find();
+		
+		for(Integer i:result){
+			System.out.println(i);
+		}
+		
+		System.out.println();
+	}
+	
+	@Test
+	public void kargerMinCutAlgo_t6_Test() {
+
+		try {
+			kosarajuAlgo.init("res/scc/t6.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		List<Integer> result = kosarajuAlgo.find();
+		
+		for(Integer i:result){
+			System.out.println(i);
+		}
+		
+		System.out.println();
+	}
+	
+	@Test
+	public void kargerMinCutAlgo_t7_Test() {
+
+		try {
+			kosarajuAlgo.init("res/scc/t7.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		List<Integer> result = kosarajuAlgo.find();
+		
+		for(Integer i:result){
+			System.out.println(i);
+		}
+		
+		System.out.println();
+	}
+	
+	@Test
+	public void kargerMinCutAlgoTest() {
+
+		try {
+			kosarajuAlgo.init("res/scc/t.txt");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		List<Integer> result = kosarajuAlgo.find();
+		
 		for(Integer i:result){
 			System.out.println(i);
 		}

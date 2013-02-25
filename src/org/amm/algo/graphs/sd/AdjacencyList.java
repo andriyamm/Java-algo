@@ -8,12 +8,12 @@ import java.util.Set;
 
 public class AdjacencyList {
 
-	private Map<Vertix, Set<Vertix>> adjacencies = new HashMap<Vertix, Set<Vertix>>();
+	private Map<Integer, Set<Integer>> adjacencies = new HashMap<Integer, Set<Integer>>();
 
-	public void addEdge(Vertix from, Vertix to) {
-		Set<Vertix> set;
+	public void addEdge(Integer from, Integer to) {
+		Set<Integer> set;
 		if (!adjacencies.containsKey(from)) {
-			set = new HashSet<Vertix>();
+			set = new HashSet<Integer>();
 			adjacencies.put(from, set);
 		} else {
 			set = adjacencies.get(from);
@@ -27,17 +27,17 @@ public class AdjacencyList {
 
 	/**
 	 * 
-	 * @param vertix
+	 * @param Integer
 	 * @param mark
 	 */
-	public void markVertix(Vertix vertix, boolean mark){
-		if(adjacencies.containsKey(vertix)){
+	public void markInteger(Integer Integer, boolean mark){
+		if(adjacencies.containsKey(Integer)){
 			//adjacencies.keySet().is;
 		}
 		
 	}
 	
-	public Set<Vertix> getAdjacent(Vertix source) {
+	public Set<Integer> getAdjacent(Integer source) {
 		return adjacencies.get(source);
 	}
 
@@ -52,16 +52,16 @@ public class AdjacencyList {
 
 	public AdjacencyList getReversedList() {
 		AdjacencyList newlist = new AdjacencyList();
-		for (Entry<Vertix, Set<Vertix>> entry : adjacencies.entrySet()) {
-			Vertix from = entry.getKey();
-			for (Vertix to : entry.getValue()) {
+		for (Entry<Integer, Set<Integer>> entry : adjacencies.entrySet()) {
+			Integer from = entry.getKey();
+			for (Integer to : entry.getValue()) {
 				newlist.addEdge(to, from);
 			}
 		}
 		return newlist;
 	}
 
-	public Set<Vertix> getSourceVertixSet() {
+	public Set<Integer> getSourceIntegerSet() {
 		return adjacencies.keySet();
 	}
 
@@ -73,28 +73,28 @@ public class AdjacencyList {
 	// return edges;
 	// }
 	
-	public Vertix getRandomVertix(){
+	public Integer getRandomInteger(){
 		//TODO
-		return new Vertix(1);
+		return new Integer(1);
 		//return adjacencies.keySet().iterator().next();
 	}
 	
 	public void printList(){
-		for (Entry<Vertix, Set<Vertix>> entry : adjacencies.entrySet()) {
-			Vertix from = entry.getKey();
-			System.out.print(from.getName() + ":\t");
-			for (Vertix to : entry.getValue()) {
-				System.out.print(to.getName() + " ");
+		for (Entry<Integer, Set<Integer>> entry : adjacencies.entrySet()) {
+			Integer from = entry.getKey();
+			System.out.print(from + ":\t");
+			for (Integer to : entry.getValue()) {
+				System.out.print(to + " ");
 			}
 			System.out.println();
 		}
 	}
 	
-	public Map<Vertix, Set<Vertix>> getAdjacencies() {
+	public Map<Integer, Set<Integer>> getAdjacencies() {
 		return adjacencies;
 	}
 
-	public void setAdjacencies(Map<Vertix, Set<Vertix>> adjacencies) {
+	public void setAdjacencies(Map<Integer, Set<Integer>> adjacencies) {
 		this.adjacencies = adjacencies;
 	}
 
