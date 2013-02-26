@@ -1,7 +1,9 @@
 package org.amm.algo.graphs;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,16 +23,14 @@ public class KosarajuAlgoTest {
 		try {
 			kosarajuAlgo.init("res/scc/t2.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<Integer> result = kosarajuAlgo.find();
-		
+		Map<Integer, ArrayList<Integer>> scc = kosarajuAlgo.findSCCs();
+		List<Integer> result = kosarajuAlgo.findSizeOfEachComponent(scc);
 		for(Integer i:result){
 			System.out.println(i);
 		}
-		
 		System.out.println();
 	}
 	
@@ -40,16 +40,14 @@ public class KosarajuAlgoTest {
 		try {
 			kosarajuAlgo.init("res/scc/t4.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<Integer> result = kosarajuAlgo.find();
-		
+		Map<Integer, ArrayList<Integer>> scc = kosarajuAlgo.findSCCs();
+		List<Integer> result = kosarajuAlgo.findSizeOfEachComponent(scc);
 		for(Integer i:result){
 			System.out.println(i);
 		}
-		
 		System.out.println();
 	}
 	
@@ -59,16 +57,14 @@ public class KosarajuAlgoTest {
 		try {
 			kosarajuAlgo.init("res/scc/t5.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<Integer> result = kosarajuAlgo.find();
-		
+		Map<Integer, ArrayList<Integer>> scc = kosarajuAlgo.findSCCs();
+		List<Integer> result = kosarajuAlgo.findSizeOfEachComponent(scc);
 		for(Integer i:result){
 			System.out.println(i);
 		}
-		
 		System.out.println();
 	}
 	
@@ -78,16 +74,14 @@ public class KosarajuAlgoTest {
 		try {
 			kosarajuAlgo.init("res/scc/t6.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<Integer> result = kosarajuAlgo.find();
-		
+		Map<Integer, ArrayList<Integer>> scc = kosarajuAlgo.findSCCs();
+		List<Integer> result = kosarajuAlgo.findSizeOfEachComponent(scc);
 		for(Integer i:result){
 			System.out.println(i);
 		}
-		
 		System.out.println();
 	}
 	
@@ -97,16 +91,14 @@ public class KosarajuAlgoTest {
 		try {
 			kosarajuAlgo.init("res/scc/t7.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<Integer> result = kosarajuAlgo.find();
-		
+		Map<Integer, ArrayList<Integer>> scc = kosarajuAlgo.findSCCs();
+		List<Integer> result = kosarajuAlgo.findSizeOfEachComponent(scc);
 		for(Integer i:result){
 			System.out.println(i);
 		}
-		
 		System.out.println();
 	}
 	
@@ -116,16 +108,14 @@ public class KosarajuAlgoTest {
 		try {
 			kosarajuAlgo.init("res/scc/t.txt");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		List<Integer> result = kosarajuAlgo.find();
-		
+		Map<Integer, ArrayList<Integer>> scc = kosarajuAlgo.findSCCs();
+		List<Integer> result = kosarajuAlgo.findSizeOfEachComponent(scc);
 		for(Integer i:result){
 			System.out.println(i);
 		}
-		
 		System.out.println();
 	}
 }
