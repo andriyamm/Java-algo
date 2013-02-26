@@ -1,4 +1,4 @@
-package org.amm.algo.graphs;
+package org.amm.algo.graphs.scc;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +19,8 @@ import org.amm.algo.graphs.sd.AdjacencyList;
  * components of a directed graph.
  * 
  */
+//TODO: needs optimization
+//TODO: needs logging
 public class KosarajuAlgo {
 
 	private ArrayList<Integer> order;
@@ -181,7 +183,7 @@ public class KosarajuAlgo {
 	 * @return
 	 * @throws FileNotFoundException
 	 */
-	private Map<Integer, Set<Integer>> readData(String filename)
+	public Map<Integer, Set<Integer>> readData(String filename)
 			throws FileNotFoundException {
 
 		Map<Integer, Set<Integer>> data = new HashMap<Integer, Set<Integer>>();
