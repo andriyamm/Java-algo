@@ -4,34 +4,34 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Edge implements Comparable<Edge>, IEdge{
+public class Edge implements IEdge{
 
-	protected Vertix from;
-	protected Vertix to;
+	protected Integer from;
+	protected Integer to;
 
 	public Edge() {
 		super();
 	}
 
-	public Edge(Vertix from, Vertix to) {
+	public Edge(Integer from, Integer to) {
 		super();
 		this.from = from;
 		this.to = to;
 	}
 
-	public Vertix getFrom() {
+	public Integer getFrom() {
 		return from;
 	}
 
-	public void setFrom(Vertix from) {
+	public void setFrom(Integer from) {
 		this.from = from;
 	}
 
-	public Vertix getTo() {
+	public Integer getTo() {
 		return to;
 	}
 
-	public void setTo(Vertix to) {
+	public void setTo(Integer to) {
 		this.to = to;
 	}
 
@@ -63,10 +63,10 @@ public class Edge implements Comparable<Edge>, IEdge{
 				.toString();
 	}
 
-	@Override
-	public int compareTo(Edge o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//	@Override
+//	public int compareTo(Edge o) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 }

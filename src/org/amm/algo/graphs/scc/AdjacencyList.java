@@ -1,10 +1,12 @@
-package org.amm.algo.graphs.sd;
+package org.amm.algo.graphs.scc;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import org.amm.algo.graphs.sd.IEdge;
 
 public class AdjacencyList {
 

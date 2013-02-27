@@ -12,7 +12,6 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 
-import org.amm.algo.graphs.sd.AdjacencyList;
 
 /**
  * Kosaraju's algorithm is an algorithm to find the strongly connected
